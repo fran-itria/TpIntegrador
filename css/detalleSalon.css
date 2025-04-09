@@ -1,0 +1,52 @@
+.salon-detalle {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.salon-detalle h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.salon-detalle .descripcion {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.galeria {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.galeria img {
+    width: 100%;
+    max-width: 280px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.detalles {
+    list-style: none;
+    padding: 0;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.detalles li {
+    margin-bottom: 0.5rem;
+}
+
+.volver {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.volver:hover {
+    text-decoration: underline;
+}
