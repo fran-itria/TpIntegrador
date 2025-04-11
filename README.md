@@ -32,7 +32,7 @@ Incluye las siguientes páginas:
 
 La entrega se encuentra en el siguiente repositorio:
 
-🔗 [Enlace al repositorio](https://github.com/usuario/repo-idw)
+🔗 [https://github.com/fran-itria/TpIntegrador.git]
 
 ---
 
