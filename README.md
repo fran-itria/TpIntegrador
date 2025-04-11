@@ -14,10 +14,11 @@ Incluye las siguientes páginas:
 
 ## 🧑‍💻 Integrantes
 
-- Apellido, Nombre
-- Apellido, Nombre
-- Apellido, Nombre
-- Apellido, Nombre
+- Vidal Mirko
+- Cañete Narela
+- Itria Franco
+- Lujan Gerardo
+- Vazquez Diego
 
 ## 📂 Estructura del proyecto
 
