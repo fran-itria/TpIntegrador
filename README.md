@@ -27,6 +27,9 @@ Incluye las siguientes páginas:
 - `contacto.html`: Página de contacto con formulario
 - `css/styles.css`: Estilos aplicados a todas las páginas
 - `assets/images`: Imágenes utilizadas
+- `salon1`: Pagina del Salon 1
+- `salon2`: Pagina del Salon 2
+- `salon3`: Pagina del Salon 3
 
 ## 🌐 Publicación
 
