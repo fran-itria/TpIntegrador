@@ -24,25 +24,30 @@
   <body>
     <div class="wrapper">
       <header>
-        <nav class="navbar navbar-expand-lg data-bs-theme="dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-gradient shadow-sm">
           <div class="container-fluid">
-            <a class="navbar-brand text-light" href="#">IDW S.A</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-              aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand fw-bold fs-4" href="index.html">IDW S.A</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
-                <a class="nav-link" href="info.html">Institucional</a>
-                <a class="nav-link" href="contacto.html">Contacto</a>
-              </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="info.html">Institucional</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="contacto.html">Contacto</a>
+                </li>
+              </ul>
             </div>
           </div>
         </nav>
-
-        
       </header>
+      
 
       <main class="container my-5">
         <h1 class="text-center">Catálogo de Salones</h1>
@@ -52,12 +57,10 @@
           <div class="col">
             <a href="salon1.html" class="text-decoration-none text-dark">
               <div class="card h-100 shadow">
-                <div class="card">
-                  <img src="assets/images/salon1.jpg" class="card-img-top" alt="Vista del Salón Arcoiris">
-                  <div class="card-body">
-                    <h5 class="card-title">Salón Arcoiris</h5>
-                    <p class="card-text">Ubicado en el centro. Capacidad para 50 niños.</p>
-                  </div>
+                <img src="assets/images/salon1.jpg" class="card-img-top" alt="Interior colorido del Salón Arcoiris con decoración infantil">
+                <div class="card-body">
+                  <h3 class="card-title">Salón Arcoiris</h3>
+                  <p class="card-text">Ubicado en el centro. Capacidad para 50 niños.</p>
                 </div>
               </div>
             </a>
@@ -67,12 +70,10 @@
           <div class="col">
             <a href="salon2.html" class="text-decoration-none text-dark">
               <div class="card h-100 shadow">
-                <div class="card">
-                  <img src="assets/images/salon2.jpg" class="card-img-top" alt="Decoración temática de Castillo Encantado">
-                  <div class="card-body">
-                    <h5 class="card-title">Castillo Encantado</h5>
-                    <p class="card-text">Ideal para temáticas de princesas y superhéroes.</p>
-                  </div>
+                <img src="assets/images/salon2.jpg" class="card-img-top" alt="Decoración temática de castillo con luces y personajes animados">
+                <div class="card-body">
+                  <h3 class="card-title">Castillo Encantado</h3>
+                  <p class="card-text">Ideal para temáticas de princesas y superhéroes.</p>
                 </div>
               </div>
             </a>
@@ -82,12 +83,10 @@
           <div class="col">
             <a href="salon3.html" class="text-decoration-none text-dark">
               <div class="card h-100 shadow">
-                <div class="card">
-                  <img src="assets/images/salon3.jpg" class="card-img-top" alt="Entrada al Salón al Aire Libre">
-                  <div class="card-body">
-                    <h5 class="card-title">Salón al Aire Libre</h5>
-                    <p class="card-text">Con juegos inflables y animadores.</p>
-                  </div>
+                <img src="assets/images/salon3.jpg" class="card-img-top" alt="Área de juegos al aire libre con inflables y espacio verde">
+                <div class="card-body">
+                  <h3 class="card-title">Salón al Aire Libre</h3>
+                  <p class="card-text">Con juegos inflables y animadores.</p>
                 </div>
               </div>
             </a>
@@ -96,11 +95,16 @@
       </main>
 
       <footer class="bg-dark text-white text-center py-3">
-        <p class="mb-0">&copy; 2025 IDW S.A - Todos los derechos reservados</p>
+        <p class="mb-0">&copy; <span id="currentYear"></span> IDW S.A - Todos los derechos reservados</p>
       </footer>
     </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Año dinámico -->
+    <script>
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>

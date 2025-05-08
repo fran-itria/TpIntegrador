@@ -189,3 +189,35 @@ footer {
   padding: 1.5rem;
   border-radius: 10px;
 }
+
+/* Barra de navegación mejorada */
+.navbar {
+  background: linear-gradient(90deg, var(--color-principal), var(--color-secundario));
+  padding: 1rem 2rem;
+}
+
+.navbar-brand {
+  color: var(--color-blanco);
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: var(--color-acento);
+}
+
+.nav-link {
+  color: var(--color-blanco) !important;
+  margin-left: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-acento) !important;
+  font-weight: 600;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.navbar-toggler {
+  border: none;
+}
