@@ -18,177 +18,93 @@
     <!-- Estilos personalizados -->
     <link rel="stylesheet" href="css/styles.css" />
 
-    <style>
-      body {
-        font-family: 'Fredoka', sans-serif;
-        background-color: #f7f7f7;
-      }
-      .salon-detalle h2 {
-        font-size: 2rem;
-        text-align: center;
-        font-weight: 600;
-        margin-top: 20px;
-      }
-      .descripcion {
-        font-size: 1.2rem;
-        text-align: center;
-        margin-bottom: 30px;
-        color: #555;
-      }
-      .carousel-item img {
-        width: 100%;
-        height: 400px;
-        object-fit: cover;
-      }
-      .carousel-control-prev-icon,
-      .carousel-control-next-icon {
-        background-color: rgba(0, 0, 0, 0.5);
-        border-radius: 50%;
-        padding: 10px;
-      }
-      .detalles {
-        list-style: none;
-        padding: 0;
-        margin-bottom: 30px;
-        font-size: 1rem;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .detalles li {
-        margin: 10px 0;
-      }
-      .volver {
-        display: inline-block;
-        margin-top: 20px;
-        text-decoration: none;
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: white;
-        border-radius: 5px;
-        text-align: center;
-      }
-      footer {
-        text-align: center;
-        padding: 15px;
-        background-color: #343a40;
-        color: white;
-        margin-top: 50px;
-      }
-
-      /* Estilo para el recuadro de los servicios */
-      .servicios-incluidos {
-        background-color: #f9f9f9;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        margin-top: 30px;
-      }
-      .servicios-incluidos h5 {
-        font-size: 1.5rem;
-        margin-bottom: 15px;
-      }
-      .servicios-incluidos ul {
-        list-style: none;
-        padding: 0;
-      }
-      .servicios-incluidos li {
-        background-color: #fff;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        margin-bottom: 10px;
-      }
-    </style>
   </head>
   <body>
-    <header class="bg-dark text-white">
-      <nav class="navbar navbar-expand-lg navbar-dark container">
-        <a class="navbar-brand fw-bold" href="#">IDW S.A</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-            <li class="nav-item"><a class="nav-link" href="info.html">Institucional</a></li>
-            <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+    <div class="wrapper">
+
+      <header class="bg-dark text-white">
+        <nav class="navbar navbar-expand-lg data-bs-theme="dark">
+          <div class="container-fluid">
+            <a class="navbar-brand text-light" href="#">IDW S.A</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-link" href="index.html">Inicio</a>
+                <a class="nav-link" href="info.html">Institucional</a>
+                <a class="nav-link" href="contacto.html">Contacto</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main class="container py-5">
+        <h1 class="text-center">Castillo Encantado</h1>
+        <p class="descripcion">
+          Este salón es perfecto para grandes celebraciones de hasta 200 personas. Con temática medieval,
+          el Castillo Encantado ofrece ambientes únicos, un espacio amplio y atención personalizada.
+        </p>
+
+        <!-- Carrusel mejorado -->
+        <div id="carouselSalonCastillo" class="carousel slide carousel-fade" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselSalonCastillo" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Imagen 1"></button>
+            <button type="button" data-bs-target="#carouselSalonCastillo" data-bs-slide-to="1" aria-label="Imagen 2"></button>
+            <button type="button" data-bs-target="#carouselSalonCastillo" data-bs-slide-to="2" aria-label="Imagen 3"></button>
+          </div>
+
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="assets/images/salon2_1.jpg" class="d-block w-100" alt="Vista general del castillo" />
+            </div>
+            <div class="carousel-item">
+              <img src="assets/images/salon2_2.jpg" class="d-block w-100" alt="Decoración temática medieval" />
+            </div>
+            <div class="carousel-item">
+              <img src="assets/images/salon2_3.jpg" class="d-block w-100" alt="Zona de banquetes" />
+            </div>
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselSalonCastillo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselSalonCastillo" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+        </div>
+
+        <!-- Detalles del salón -->
+        <div class="cajaDetalleSalon container bg-light">
+          <h4>Detalles del Salón</h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Dirección:</strong> Av. Medieval 456, Ciudad Medieval</li>
+            <li class="list-group-item"><strong>Valor:</strong> $120.000</li>
+            <li class="list-group-item"><strong>Estado:</strong> Disponible</li>
           </ul>
         </div>
-      </nav>
-    </header>
 
-    <main class="salon-detalle container py-5">
-      <h2>Castillo Encantado</h2>
-      <p class="descripcion">
-        Este salón es perfecto para grandes celebraciones de hasta 200 personas. Con temática medieval,
-        el Castillo Encantado ofrece ambientes únicos, un espacio amplio y atención personalizada.
-      </p>
-
-      <!-- Carrusel mejorado -->
-      <div id="carouselSalonCastillo" class="carousel slide carousel-fade" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselSalonCastillo" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Imagen 1"></button>
-          <button type="button" data-bs-target="#carouselSalonCastillo" data-bs-slide-to="1" aria-label="Imagen 2"></button>
-          <button type="button" data-bs-target="#carouselSalonCastillo" data-bs-slide-to="2" aria-label="Imagen 3"></button>
+        <!-- Servicios del Salón Castillo Encantado - Corregido -->
+        <div class="servicios-incluidos bg-light">
+          <h4>Servicios Incluidos</h4>
+          <ul class="list-group">
+            <li class="list-group-item">Animación temática medieval</li>
+            <li class="list-group-item">Servicio de banquetes</li>
+            <li class="list-group-item">Zonas especiales para fotos</li>
+          </ul>
         </div>
+        
+        <a class="btn btn-primary" href="index.html" role="button">← Volver al catálogo</a>
+      </main>
 
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="assets/images/salon2_1.jpg" class="d-block w-100" alt="Vista general del castillo" />
-          </div>
-          <div class="carousel-item">
-            <img src="assets/images/salon2_2.jpg" class="d-block w-100" alt="Decoración temática medieval" />
-          </div>
-          <div class="carousel-item">
-            <img src="assets/images/salon2_3.jpg" class="d-block w-100" alt="Zona de banquetes" />
-          </div>
-        </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselSalonCastillo" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselSalonCastillo" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Siguiente</span>
-        </button>
-      </div>
-
-<!-- Detalles del salón -->
-<div class="detalles-container">
-  <h5>Detalles del Salón</h5>
-  <ul class="detalles">
-    <li><strong>Dirección:</strong> Av. Medieval 456, Ciudad Medieval</li>
-    <li><strong>Valor:</strong> $120.000</li>
-    <li><strong>Estado:</strong> Disponible</li>
-  </ul>
-</div>
-
-
-      <!-- Servicios del Salón Castillo Encantado - Corregido -->
-      <div class="servicios-incluidos">
-        <h5>Servicios Incluidos</h5>
-        <ul>
-          <li>Animación temática medieval</li>
-          <li>Servicio de banquetes</li>
-          <li>Decoración medieval</li>
-          <li>Zonas especiales para fotos</li>
-        </ul>
-      </div>
-
-      <a href="index.html" class="volver btn btn-primary">← Volver al catálogo</a>
-    </main>
-
-    <footer>
-      <p>&copy; 2025 IDW S.A - Todos los derechos reservados</p>
-    </footer>
-
+      <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">&copy; 2025 IDW S.A - Todos los derechos reservados</p>
+      </footer>
+    </div>  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
