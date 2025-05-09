@@ -15,75 +15,62 @@
 
 body {
   font-family: "Fredoka", sans-serif;
-  margin: 0;
-  padding: 0;
   background-color: var(--color-fondo);
   color: var(--color-contrast);
+  height: 100%;
+  margin: 0;
 }
 
-h1, h2, h3, p, ul, li {
+main {
+  flex: 1;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+li {
   margin: 0;
   padding: 0;
 }
 
 /* ------------------ ENCABEZADO ------------------ */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 header {
-  background: linear-gradient(90deg, var(--color-principal), var(--color-secundario));
+  background: linear-gradient(
+    90deg,
+    var(--color-principal),
+    var(--color-secundario)
+  );
   padding: 1rem 2rem;
-  color: var(--color-blanco);
 }
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+/* ------------------ BARRA DE NAVEGACION ------------------ */
+
+.nav-custom {
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  transition: all 0.3s ease;
+  display: inline-block;
 }
 
-nav h1 {
-  font-size: 1.8rem;
-  margin: 0;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  padding: 0;
-}
-
-nav ul li a {
-  color: var(--color-blanco);
+.nav-custom:hover {
+  background-color: #ffffff22; 
+  border-color: #fff;
+  color: #fff !important; /* asegura contraste si el fondo cambia */
   text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
 }
-
-nav ul li a:hover,
-nav ul li a.active {
-  color: #ffeb3b;
-}
-
-nav ul li a:focus,
-.volver:focus,
-.formulario button:focus {
-  outline: 2px solid var(--color-acento);
-  outline-offset: 4px;
-  background-color: var(--color-acento); /* Añadir color de fondo para mejorar contraste */
-}
-
-.formulario input:focus,
-.formulario textarea:focus {
-  border-color: var(--color-acento);
-}
-
 /* ------------------ PIE DE PÁGINA ------------------ */
 footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: #f0f0f0;
   font-size: 0.9rem;
-  margin-top: 3rem;
+  padding: 1rem;
 }
 
 /* ------------------ PORTADA ------------------ */
@@ -96,71 +83,46 @@ footer {
 }
 
 /* ------------------ CATÁLOGO DE SALONES ------------------ */
-.catalogo {
-  text-align: start;
-  padding-left: 2rem;
-}
-
-.salones {
+/* .salones {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
-}
+} */
 
-.salonLink {
-  text-decoration: none;
-  color: var(--color-principal);
-}
-
-.salon {
+/* .salon {
   background-color: var(--color-blanco);
   border-radius: 15px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   width: 300px;
   padding: 1rem;
   transition: transform 0.3s, box-shadow 0.3s ease;
-}
+} */
 
-.salon:hover {
+/* .salon:hover {
   transform: translateY(-10px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+} */
+
+.card img {
+  object-fit: cover;
+  height: 200px;
 }
 
-.salon img {
-  width: 100%;
-  height: 70%;
-  margin: 0;
-  border-radius: 10px;
-}
-
-.ver-mas {
-  display: inline-block;
-  margin-top: 1rem;
-  background-color: var(--color-acento);
-  color: var(--color-blanco);
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-
-.ver-mas:hover {
-  background-color: #ff1493;
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--color-acento);
 }
 
 /* ------------------ PAGINA INFO ------------------ */
 .info {
-  padding: 2rem;
-  text-align: center;
+  margin-top: 2rem;
 }
 
-.bloques {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+.card {
+  --bs-card-border-color: null;
 }
 
 .bloque {
@@ -168,7 +130,6 @@ footer {
   padding: 1.5rem;
   border-radius: 15px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Sombra más prominente */
-  text-align: left;
 }
 
 .bloque h3 {
@@ -176,74 +137,29 @@ footer {
   margin-bottom: 1rem;
 }
 
-.bloque ul {
-  padding-left: 1rem;
-}
-
-.bloque li {
-  list-style-type: square;
-  margin-bottom: 0.5rem;
-}
-
 /* ------------------ PAGINA DETALLE SALON ------------------ */
-.salon-detalle {
+.descripcion {
+ font-size: 1.2rem;
+ text-align: center;
+ margin-bottom: 30px;
+ color: #555;
+}
+
+.carousel-item img {
+  height: 500px;
+  object-fit: cover;
+}
+
+.cajaDetalleSalon {
   padding: 2rem;
-  max-width: 900px;
-  margin: 0 auto;
 }
 
-.salon-detalle h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.salon-detalle .descripcion {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-}
-
-.galeria {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.5rem;
-}
-
-.galeria img {
-  width: 100%;
-  max-width: 280px;
+.servicios-incluidos {
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  object-fit: cover; /* Mejora la calidad visual de las imágenes */
-}
-
-.detalles {
-  list-style: none;
-  padding: 0;
-  font-size: 1rem;
-  margin-bottom: 2rem;
-}
-
-.detalles li {
-  margin-bottom: 0.5rem;
-}
-
-.volver {
-  display: inline-block;
-  margin-top: 1.5rem; /* Agregué más espacio arriba */
-  color: #0077cc;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 0.5rem 1rem; /* Agregué un poco de relleno */
-  border-radius: 8px;
-  background-color: #f0f0f0;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.volver:hover {
-  background-color: #0077cc;
-  color: var(--color-blanco);
-  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 /* ------------------ PAGINA CONTACTO ------------------ */
@@ -297,152 +213,34 @@ footer {
   border-radius: 10px;
 }
 
-/* ------------------ RESPONSIVE GALERÍA ------------------ */
-@media (max-width: 600px) {
-  .galeria img {
-    width: 100%;
-  }
+/* Barra de navegación mejorada */
+.navbar {
+  background: linear-gradient(90deg, var(--color-principal), var(--color-secundario));
+  padding: 1rem 2rem;
 }
 
-/* ------------------ RESPONSIVE GENERAL ------------------ */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  nav ul {
-    flex-direction: column;
-    width: 100%;
-    gap: 0.5rem;
-  }
-
-  .salones {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .formulario {
-    width: 100%;
-    padding: 0 1rem;
-  }
-
-  .galeria {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .galeria img {
-    max-width: 100%;
-  }
-
-  .bloques {
-    grid-template-columns: 1fr;
-  }
+.navbar-brand {
+  color: var(--color-blanco);
+  transition: color 0.3s ease;
 }
 
-@media (max-width: 480px) {
-  nav h1 {
-    font-size: 1.4rem;
-  }
-
-  .salon {
-    width: 90%;
-  }
-
-  .formulario input,
-  .formulario textarea {
-    font-size: 0.9rem;
-  }
-
-  .formulario button {
-    font-size: 0.95rem;
-  }
-
-  .ver-mas {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
-  }
+.navbar-brand:hover {
+  color: var(--color-acento);
 }
 
-.detalles-container {
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-top: 30px;
+.nav-link {
+  color: var(--color-blanco) !important;
+  margin-left: 1rem;
+  transition: color 0.3s ease;
 }
 
-.detalles-container h5 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-acento) !important;
+  font-weight: 600;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
 }
 
-.detalles {
-  list-style: none;
-  padding: 0;
-  font-size: 1rem;
-}
-
-.detalles li {
-  background-color: #fff;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-.detalles-container {
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-top: 30px;
-}
-
-.detalles-container h5 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-}
-
-.detalles {
-  list-style: none;
-  padding: 0;
-  font-size: 1rem;
-}
-
-.detalles li {
-  background-color: #fff;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-.detalles-container {
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-top: 30px;
-}
-
-.detalles-container h5 {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-}
-
-.detalles {
-  list-style: none;
-  padding: 0;
-  font-size: 1rem;
-}
-
-.detalles li {
-  background-color: #fff;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 10px;
+.navbar-toggler {
+  border: none;
 }
