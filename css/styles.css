@@ -62,7 +62,7 @@ header {
 }
 
 .nav-custom:hover {
-  background-color: #ffffff22; 
+  background-color: #ffffff22;
   border-color: #fff;
   color: #fff !important; /* asegura contraste si el fondo cambia */
   text-decoration: none;
@@ -139,10 +139,10 @@ footer {
 
 /* ------------------ PAGINA DETALLE SALON ------------------ */
 .descripcion {
- font-size: 1.2rem;
- text-align: center;
- margin-bottom: 30px;
- color: #555;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #555;
 }
 
 .carousel-item img {
@@ -163,59 +163,53 @@ footer {
 }
 
 /* ------------------ PAGINA CONTACTO ------------------ */
-.contacto {
-  padding: 2rem;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.contacto h2 {
-  text-align: center;
-}
 
 .formulario {
-  display: flex;
-  flex-direction: column;
   gap: 1rem;
   margin-top: 2rem;
   max-width: 500px;
   margin-inline: auto;
+  background-color: #f8f9fa;
 }
 
 .formulario input,
 .formulario textarea {
   padding: 0.8rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-family: inherit;
-  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.formulario,
+.datos-contacto {
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
 .formulario button {
   background-color: var(--color-acento);
   color: var(--color-blanco);
   border: none;
-  border-radius: 8px;
   padding: 0.8rem;
   font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  width: 100%;
 }
 
 .formulario button:hover {
-  background-color: #ff1493;
+  background-color: #b50563;
 }
 
 .datos-contacto {
   margin-top: 2rem;
-  background-color: #fef1f6;
-  padding: 1.5rem;
-  border-radius: 10px;
+  background-color: #f0f0ff;
 }
 
 /* Barra de navegación mejorada */
 .navbar {
-  background: linear-gradient(90deg, var(--color-principal), var(--color-secundario));
+  background: linear-gradient(
+    90deg,
+    var(--color-principal),
+    var(--color-secundario)
+  );
   padding: 1rem 2rem;
 }
 
