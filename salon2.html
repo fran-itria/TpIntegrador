@@ -17,8 +17,8 @@
     />
     <!-- Estilos personalizados -->
     <link rel="stylesheet" href="css/styles.css" />
-
   </head>
+
   <body>
     <div class="wrapper">
 
@@ -46,7 +46,6 @@
           </div>
         </nav>
       </header>
-      
 
       <main class="container py-5">
         <h1 class="text-center">Castillo Encantado</h1>
@@ -55,7 +54,7 @@
           el Castillo Encantado ofrece ambientes únicos, un espacio amplio y atención personalizada.
         </p>
 
-        <!-- Carrusel mejorado -->
+        <!-- Carrusel -->
         <div id="carouselSalonCastillo" class="carousel slide carousel-fade" data-bs-ride="carousel">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselSalonCastillo" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Imagen 1"></button>
@@ -85,8 +84,8 @@
           </button>
         </div>
 
-        <!-- Detalles del salón -->
-        <div class="cajaDetalleSalon container bg-light">
+        <!-- Detalles -->
+        <div class="cajaDetalleSalon container bg-light my-4 p-3 rounded shadow-sm">
           <h4>Detalles del Salón</h4>
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><strong>Dirección:</strong> Av. Medieval 456, Ciudad Medieval</li>
@@ -95,8 +94,8 @@
           </ul>
         </div>
 
-        <!-- Servicios del Salón Castillo Encantado - Corregido -->
-        <div class="servicios-incluidos bg-light">
+        <!-- Servicios -->
+        <div class="servicios-incluidos bg-light my-4 p-3 rounded shadow-sm">
           <h4>Servicios Incluidos</h4>
           <ul class="list-group">
             <li class="list-group-item">Animación temática medieval</li>
@@ -104,14 +103,19 @@
             <li class="list-group-item">Zonas especiales para fotos</li>
           </ul>
         </div>
-        
-        <a class="btn btn-primary" href="index.html" role="button">← Volver al catálogo</a>
+
+        <a class="btn btn-primary mt-3" href="index.html" role="button">← Volver al catálogo</a>
       </main>
 
       <footer class="bg-dark text-white text-center py-3">
-        <p class="mb-0">&copy; 2025 IDW S.A - Todos los derechos reservados</p>
+        <p class="mb-0">&copy; <span id="currentYear"></span> IDW S.A - Todos los derechos reservados</p>
       </footer>
-    </div>  
+    </div>
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>

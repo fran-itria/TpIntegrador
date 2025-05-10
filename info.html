@@ -13,7 +13,6 @@
 
     <!-- CSS personalizado -->
     <link rel="stylesheet" href="css/styles.css" />
-
   </head>
 
   <body>
@@ -29,10 +28,10 @@
             <div class="collapse navbar-collapse justify-content-lg-end justify-content-center" id="navbarNav">
               <ul class="navbar-nav text-center text-lg-end">
                 <li class="nav-item">
-                  <a class="nav-link" href="index.html">Inicio</a>
+                  <a class="nav-link active" href="index.html">Inicio</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="info.html">Institucional</a>
+                  <a class="nav-link" href="info.html">Institucional</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="contacto.html">Contacto</a>
@@ -42,7 +41,6 @@
           </div>
         </nav>
       </header>
-      
 
       <main class="container my-5">
         <h1 class="text-center">Sobre IDW S.A.</h1>
@@ -104,11 +102,16 @@
       </main>
 
       <footer class="bg-dark text-white text-center py-3">
-        <p class="mb-0">&copy; 2025 IDW S.A - Todos los derechos reservados</p>
+        <p class="mb-0">&copy; <span id="currentYear"></span> IDW S.A - Todos los derechos reservados</p>
       </footer>
     </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Año dinámico -->
+    <script>
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
