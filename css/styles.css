@@ -43,11 +43,9 @@ li {
 }
 
 header {
-  background: linear-gradient(
-    90deg,
-    var(--color-principal),
-    var(--color-secundario)
-  );
+  background: linear-gradient(90deg,
+      var(--color-principal),
+      var(--color-secundario));
   padding: 1rem 2rem;
 }
 
@@ -64,9 +62,11 @@ header {
 .nav-custom:hover {
   background-color: #ffffff22;
   border-color: #fff;
-  color: #fff !important; /* asegura contraste si el fondo cambia */
+  color: #fff !important;
+  /* asegura contraste si el fondo cambia */
   text-decoration: none;
 }
+
 /* ------------------ PIE DE PÁGINA ------------------ */
 footer {
   font-size: 0.9rem;
@@ -117,6 +117,11 @@ footer {
 }
 
 /* ------------------ PAGINA INFO ------------------ */
+
+.principal-title {
+  color: var(--color-secundario);
+}
+
 .info {
   margin-top: 2rem;
 }
@@ -127,14 +132,22 @@ footer {
 
 .bloque {
   background-color: var(--color-blanco);
-  padding: 1.5rem;
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Sombra más prominente */
 }
 
 .bloque h3 {
   color: var(--color-acento);
-  margin-bottom: 1rem;
+}
+
+.intern-card {
+  border: transparent solid 1px;
+  padding: 1rem;
+}
+
+.intern-card:hover {
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+  border: var(--color-principal) solid 1px;
+  border-radius: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* ------------------ PAGINA DETALLE SALON ------------------ */
@@ -205,11 +218,9 @@ footer {
 
 /* Barra de navegación mejorada */
 .navbar {
-  background: linear-gradient(
-    90deg,
-    var(--color-principal),
-    var(--color-secundario)
-  );
+  background: linear-gradient(90deg,
+      var(--color-principal),
+      var(--color-secundario));
   padding: 1rem 2rem;
 }
 
