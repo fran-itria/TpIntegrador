@@ -43,9 +43,11 @@ li {
 }
 
 header {
-  background: linear-gradient(90deg,
-      var(--color-principal),
-      var(--color-secundario));
+  background: linear-gradient(
+    90deg,
+    var(--color-principal),
+    var(--color-secundario)
+  );
   padding: 1rem 2rem;
 }
 
@@ -83,27 +85,6 @@ footer {
 }
 
 /* ------------------ CATÁLOGO DE SALONES ------------------ */
-/* .salones {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-} */
-
-/* .salon {
-  background-color: var(--color-blanco);
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  padding: 1rem;
-  transition: transform 0.3s, box-shadow 0.3s ease;
-} */
-
-/* .salon:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-} */
-
 .card img {
   object-fit: cover;
   height: 200px;
@@ -117,7 +98,6 @@ footer {
 }
 
 /* ------------------ PAGINA INFO ------------------ */
-
 .principal-title {
   color: var(--color-secundario);
 }
@@ -177,50 +157,44 @@ footer {
 
 /* ------------------ PAGINA CONTACTO ------------------ */
 
+.form-y-datos {
+  margin-top: 3rem;
+  max-width: 1000px;
+}
+
 .formulario {
-  gap: 1rem;
-  margin-top: 2rem;
-  max-width: 500px;
-  margin-inline: auto;
   background-color: #f8f9fa;
-}
-
-.formulario input,
-.formulario textarea {
-  padding: 0.8rem;
-  margin-bottom: 2rem;
-}
-
-.formulario,
-.datos-contacto {
   padding: 2rem;
-  border-radius: 1rem;
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
+
 
 .formulario button {
   background-color: var(--color-acento);
   color: var(--color-blanco);
-  border: none;
-  padding: 0.8rem;
-  font-weight: bold;
   width: 100%;
 }
 
 .formulario button:hover {
-  background-color: #b50563;
+  background-color: #c10b6c;
+  color: var(--color-blanco);
 }
 
 .datos-contacto {
-  margin-top: 2rem;
   background-color: #f0f0ff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
 /* Barra de navegación mejorada */
 .navbar {
-  background: linear-gradient(90deg,
-      var(--color-principal),
-      var(--color-secundario));
+  background: linear-gradient(
+    90deg,
+    var(--color-principal),
+    var(--color-secundario)
+  );
   padding: 1rem 2rem;
 }
 
