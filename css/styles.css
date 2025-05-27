@@ -129,7 +129,7 @@ footer {
   background-color: var(--color-blanco);
   padding: 1.5rem;
   border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Sombra más prominente */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .bloque h3 {
