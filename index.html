@@ -39,7 +39,7 @@
     <main class="container py-5">
       <h1 class="mb-4 text-center">Catálogo de Salones</h1>
 
-
+      <!-- Botón para crear nuevo salón -->
       <div class="d-flex justify-content-end mb-4">
         <a href="crear.html" class="btn btn-success">
           + Nuevo Salón
@@ -47,10 +47,10 @@
       </div>
 
       <div id="catalogoSalones" class="row row-cols-1 row-cols-md-3 g-4">
-
+        <!-- Tarjetas cargadas por JS -->
       </div>
 
-
+      <!-- Botón para reiniciar catálogo (solo para desarrollo) -->
       <div class="text-center mt-4">
         <button id="btnReiniciarDatos" class="btn btn-outline-danger btn-sm">
           Reiniciar Catálogo (Solo Desarrollo)
@@ -101,6 +101,7 @@
 
     mostrarCatalogoSalones();
 
+    // Lógica para reiniciar los datos
     document.getElementById("btnReiniciarDatos").addEventListener("click", () => {
       localStorage.clear();
       import('./js/app.js').then(({ inicializarLocalStorage }) => {
