@@ -38,13 +38,20 @@ export function inicializarLocalStorage() {
 
 // Obtener todos los salones
 export function obtenerSalones() {
-  return JSON.parse(localStorage.getItem("salones")) || [];
+  try {
+    const salonesStr = localStorage.getItem("salones");
+    return salonesStr ? JSON.parse(salonesStr) : [];
+  } catch (error) {
+    console.error("Error al leer salones de LocalStorage:", error);
+    return [];
+  }
 }
 
 // Obtener un salón por ID
 export function obtenerSalonPorId(id) {
+  if (typeof id !== "number") return null;
   const salones = obtenerSalones();
-  return salones.find(salon => salon.id === id);
+  return salones.find(salon => salon.id === id) || null;
 }
 
 // Mostrar catálogo en index.html
@@ -78,31 +85,55 @@ export function mostrarCatalogoSalones() {
 
 // Eliminar salón por ID (no permite eliminar los salones base con id 1,2,3)
 export function eliminarSalonPorId(id) {
+  if (typeof id !== "number") {
+    alert("ID inválido.");
+    return false;
+  }
+
   if ([1, 2, 3].includes(id)) {
     alert("No se puede eliminar este salón base.");
-    return;
+    return false;
   }
 
   let salones = obtenerSalones();
-  salones = salones.filter(salon => salon.id !== id);
-  localStorage.setItem('salones', JSON.stringify(salones));
+  const nuevoListado = salones.filter(salon => salon.id !== id);
+
+  if (nuevoListado.length === salones.length) {
+    alert("No se encontró el salón a eliminar.");
+    return false;
+  }
+
+  localStorage.setItem('salones', JSON.stringify(nuevoListado));
+  return true;
 }
 
 // Guardar salón editado
 export function guardarSalon(salonEditado) {
+  if (!salonEditado || typeof salonEditado.id !== "number") {
+    console.error('Datos inválidos para actualizar el salón.');
+    return false;
+  }
+
   let salones = obtenerSalones();
   const index = salones.findIndex(salon => salon.id === salonEditado.id);
 
-  if (index !== -1) {
-    salones[index] = salonEditado;
-    localStorage.setItem('salones', JSON.stringify(salones));
-  } else {
+  if (index === -1) {
     console.error('No se encontró el salón para actualizar');
+    return false;
   }
+
+  salones[index] = salonEditado;
+  localStorage.setItem('salones', JSON.stringify(salones));
+  return true;
 }
 
 // Agregar un nuevo salón
 export function agregarSalon(salonNuevo) {
+  if (!salonNuevo || !salonNuevo.nombre) {
+    console.error('Datos inválidos para agregar un salón.');
+    return false;
+  }
+
   let salones = obtenerSalones();
 
   // Generar un id único basado en el máximo existente + 1
@@ -111,4 +142,5 @@ export function agregarSalon(salonNuevo) {
 
   salones.push(salonNuevo);
   localStorage.setItem('salones', JSON.stringify(salones));
+  return true;
 }

@@ -1,4 +1,10 @@
-import { obtenerSalones, inicializarLocalStorage } from './app.js';
+import { 
+  obtenerSalones, 
+  inicializarLocalStorage, 
+  agregarSalon, 
+  guardarSalon, 
+  eliminarSalonPorId 
+} from './app.js';
 
 inicializarLocalStorage();
 
@@ -7,10 +13,11 @@ const form = document.getElementById('formSalon');
 const btnCancelar = document.getElementById('btnCancelar');
 
 let salones = obtenerSalones();
-let editando = false; // Para saber si estamos editando o creando
+let editando = false;
 
 function mostrarSalones() {
   tablaBody.innerHTML = '';
+
   salones.forEach(salon => {
     const fila = document.createElement('tr');
     fila.innerHTML = `
@@ -28,19 +35,13 @@ function mostrarSalones() {
     tablaBody.appendChild(fila);
   });
 
-  // Agregar event listeners para botones editar y eliminar
+  // Reasignar eventos
   document.querySelectorAll('.btn-editar').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const id = Number(e.target.dataset.id);
-      cargarFormulario(id);
-    });
+    btn.onclick = () => cargarFormulario(Number(btn.dataset.id));
   });
 
   document.querySelectorAll('.btn-eliminar').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const id = Number(e.target.dataset.id);
-      eliminarSalon(id);
-    });
+    btn.onclick = () => eliminarSalon(Number(btn.dataset.id));
   });
 }
 
@@ -49,65 +50,72 @@ function cargarFormulario(id) {
   if (!salon) return;
 
   editando = true;
-  document.getElementById('salonId').value = salon.id;
-  document.getElementById('nombre').value = salon.nombre;
-  document.getElementById('descripcion').value = salon.descripcion;
-  document.getElementById('direccion').value = salon.direccion;
-  document.getElementById('valor').value = salon.valor;
-  document.getElementById('estado').value = salon.estado;
-  document.getElementById('imagen').value = salon.imagen;
+  form['salonId'].value = salon.id;
+  form['nombre'].value = salon.nombre;
+  form['descripcion'].value = salon.descripcion;
+  form['direccion'].value = salon.direccion;
+  form['valor'].value = salon.valor;
+  form['estado'].value = salon.estado;
+  form['imagen'].value = salon.imagen;
 }
 
 function eliminarSalon(id) {
   if (confirm('¿Estás seguro de eliminar este salón?')) {
-    salones = salones.filter(s => s.id !== id);
-    localStorage.setItem('salones', JSON.stringify(salones));
-    mostrarSalones();
+    const eliminado = eliminarSalonPorId(id);
+    if (eliminado) {
+      salones = obtenerSalones();
+      mostrarSalones();
+    }
   }
 }
 
-// Manejar el submit del formulario
+// Manejo de submit del formulario
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  const id = Number(document.getElementById('salonId').value);
-  const nombre = document.getElementById('nombre').value.trim();
-  const descripcion = document.getElementById('descripcion').value.trim();
-  const direccion = document.getElementById('direccion').value.trim();
-  const valor = Number(document.getElementById('valor').value);
-  const estado = document.getElementById('estado').value;
-  const imagen = document.getElementById('imagen').value.trim();
+  const id = Number(form['salonId'].value);
+  const nombre = form['nombre'].value.trim();
+  const descripcion = form['descripcion'].value.trim();
+  const direccion = form['direccion'].value.trim();
+  const valor = Number(form['valor'].value);
+  const estado = form['estado'].value;
+  const imagen = form['imagen'].value.trim();
 
   if (!nombre || !descripcion || !direccion || !valor || !imagen) {
     alert('Por favor, complete todos los campos.');
     return;
   }
 
+  const salonData = { id, nombre, descripcion, direccion, valor, estado, imagen };
+
   if (editando) {
-    // Modificar salón existente
-    const index = salones.findIndex(s => s.id === id);
-    if (index !== -1) {
-      salones[index] = { id, nombre, descripcion, direccion, valor, estado, imagen };
+    const actualizado = guardarSalon(salonData);
+    if (actualizado) {
+      salones = obtenerSalones();
+      alert('Salón actualizado correctamente.');
+    } else {
+      alert('Error al actualizar el salón.');
     }
   } else {
-    // Crear nuevo salón
-    const nuevoId = salones.length > 0 ? Math.max(...salones.map(s => s.id)) + 1 : 1;
-    salones.push({ id: nuevoId, nombre, descripcion, direccion, valor, estado, imagen });
+    const agregado = agregarSalon(salonData);
+    if (agregado) {
+      salones = obtenerSalones();
+      alert('Salón agregado correctamente.');
+    } else {
+      alert('Error al agregar el salón.');
+    }
   }
 
-  localStorage.setItem('salones', JSON.stringify(salones));
-  mostrarSalones();
   form.reset();
+  form['salonId'].value = '';
   editando = false;
-  document.getElementById('salonId').value = '';
+  mostrarSalones();
 });
 
-// Botón cancelar
 btnCancelar.addEventListener('click', () => {
   form.reset();
+  form['salonId'].value = '';
   editando = false;
-  document.getElementById('salonId').value = '';
 });
 
-// Mostrar los salones al cargar la página
 mostrarSalones();
