@@ -5,6 +5,7 @@ export const salonesIniciales = [
     nombre: "Salón Arcoiris",
     descripcion: "Ubicado en el centro. Capacidad para 50 niños.",
     direccion: "Av. Central 123, Ciudad Eventos",
+    capacidad: 500,
     valor: 50000,
     estado: "Disponible",
     imagen: "salonrainbow"
@@ -14,6 +15,7 @@ export const salonesIniciales = [
     nombre: "Salón Gamer",
     descripcion: "Juegos electrónicos, arcade, lasers, y luces gamer.",
     direccion: "Av. PlayerOne 456, Ciudad Games",
+    capacidad: 100,
     valor: 120000,
     estado: "Disponible",
     imagen: "salongamer"
@@ -23,6 +25,7 @@ export const salonesIniciales = [
     nombre: "Salón al Aire Libre",
     descripcion: "Con juegos inflables y animadores.",
     direccion: "Calle de la Elegancia, Sector Empresarial",
+    capacidad: 300,
     valor: 150000,
     estado: "Disponible",
     imagen: "salonoutdoor"
