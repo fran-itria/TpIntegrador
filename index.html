@@ -69,36 +69,9 @@
   </script>
 
   <script type="module">
-    import { inicializarLocalStorage, obtenerSalones } from './js/app.js';
+    import { inicializarLocalStorage, obtenerSalones, mostrarCatalogoSalones } from './js/app.js';
 
     inicializarLocalStorage();
-
-    function mostrarCatalogoSalones() {
-      const contenedor = document.getElementById("catalogoSalones");
-      const salones = obtenerSalones();
-
-      contenedor.innerHTML = "";
-
-      salones.forEach(salon => {
-        const tarjeta = document.createElement("div");
-        tarjeta.className = "col";
-
-        tarjeta.innerHTML = `
-          <a href="detalle.html?id=${salon.id}" class="text-decoration-none text-dark">
-            <div class="card h-100 shadow">
-              <img src="assets/images/${salon.imagen}-main.png" class="card-img-top" alt="${salon.nombre}">
-              <div class="card-body">
-                <h3 class="card-title">${salon.nombre}</h3>
-                <p class="card-text">${salon.descripcion}</p>
-              </div>
-            </div>
-          </a>
-        `;
-
-        contenedor.appendChild(tarjeta);
-      });
-    }
-
     mostrarCatalogoSalones();
 
     // Lógica para reiniciar los datos

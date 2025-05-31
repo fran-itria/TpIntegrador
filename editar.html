@@ -77,10 +77,13 @@
         <div class="mb-3">
           <label for="imagen" class="form-label">Nombre base de la imagen (sin extensión)</label>
           <input type="text" class="form-control" id="imagen" required />
-          <div class="form-text">Ejemplo: salon1-main</div>
+          <div class="form-text">Ejemplo: salonneon</div>
         </div>
 
-        <button type="submit" class="btn btn-primary w-100">Guardar Cambios</button>
+        <div class="d-flex flex-column">
+          <button type="button" class="btn btn-danger" id="cancelButton">Cancelar</button>
+          <button type="submit" class="btn btn-primary mt-2">Guardar Cambios</button>
+        </div>
       </form>
     </main>
 
@@ -140,6 +143,11 @@
       guardarSalon(salonEditado);
       alert('Salón actualizado correctamente.');
       window.location.href = `detalle.html?id=${salonEditado.id}`;
+    });
+
+    const cancelButton = document.getElementById('cancelButton');
+    cancelButton.addEventListener('click', () => {
+      window.location.href = `detalle.html?id=${id}`;
     });
   </script>
 </body>

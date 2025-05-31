@@ -56,6 +56,11 @@
         </div>
 
         <div class="mb-3">
+          <label for="capacidad" class="form-label">Capacidad</label>
+          <input type="number" class="form-control" id="capacidad" min="1" required />
+        </div>
+
+        <div class="mb-3">
           <label for="valor" class="form-label">Valor (en $)</label>
           <input type="number" class="form-control" id="valor" min="0" required />
         </div>
@@ -71,11 +76,14 @@
 
         <div class="mb-3">
           <label for="imagen" class="form-label">Nombre base de imagen (sin extensión ni sufijos)</label>
-          <input type="text" class="form-control" id="imagen" placeholder="ejemplo: salonmoderno" required />
+          <input type="text" class="form-control" id="imagen" placeholder="ejemplo: salonneon" required />
           <div class="form-text">Debe coincidir con los archivos en /assets/images/</div>
         </div>
-
-        <button type="submit" class="btn btn-primary w-100">Crear Salón</button>
+        
+        <div>
+          <a href="index.html" class="btn btn-danger w-100">Cancelar</a>
+          <button type="submit" class="btn btn-primary w-100 mt-3">Crear Salón</button>
+        </div>
       </form>
     </main>
 
@@ -101,6 +109,7 @@
         nombre: form.nombre.value.trim(),
         descripcion: form.descripcion.value.trim(),
         direccion: form.direccion.value.trim(),
+        capacidad: Number(form.capacidad.value),
         valor: parseFloat(form.valor.value),
         estado: form.estado.value,
         imagen: form.imagen.value.trim(),
