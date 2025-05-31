@@ -24,6 +24,7 @@ function mostrarSalones() {
       <td>${salon.nombre}</td>
       <td>${salon.descripcion}</td>
       <td>${salon.direccion}</td>
+      <td>${salon.capacidad}</td>
       <td>${salon.valor}</td>
       <td>${salon.estado}</td>
       <td>${salon.imagen}</td>
@@ -54,6 +55,7 @@ function cargarFormulario(id) {
   form['nombre'].value = salon.nombre;
   form['descripcion'].value = salon.descripcion;
   form['direccion'].value = salon.direccion;
+  form['capacidad'].value = salon.capacidad;
   form['valor'].value = salon.valor;
   form['estado'].value = salon.estado;
   form['imagen'].value = salon.imagen;
@@ -77,16 +79,17 @@ form.addEventListener('submit', (e) => {
   const nombre = form['nombre'].value.trim();
   const descripcion = form['descripcion'].value.trim();
   const direccion = form['direccion'].value.trim();
+  const capacidad = Number(form['capacidad'].value);
   const valor = Number(form['valor'].value);
   const estado = form['estado'].value;
   const imagen = form['imagen'].value.trim();
 
-  if (!nombre || !descripcion || !direccion || !valor || !imagen) {
+  if (!nombre || !descripcion || !direccion || !capacidad || !valor || !imagen) {
     alert('Por favor, complete todos los campos.');
     return;
   }
 
-  const salonData = { id, nombre, descripcion, direccion, valor, estado, imagen };
+  const salonData = { id, nombre, descripcion, direccion, capacidad, valor, estado, imagen };
 
   if (editando) {
     const actualizado = guardarSalon(salonData);
