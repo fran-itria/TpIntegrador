@@ -78,14 +78,9 @@
         </div>
         
         <div class="mb-3">
-          <label for="imagen" class="form-label">Imagen</label>
-          <select id="imagen" class="form-select" required>
-            <option value="">Seleccione...</option>
-            <option value="salongamer">Salón Gamer</option>
-            <option value="salonneon">Salón Neon</option>
-            <option value="salonoutdoor">Salón Outdoor</option>
-            <option value="salonrainbow">Salón Rainbow</option>
-          </select>
+          <label for="imagen" class="form-label">Nombre base de imagen (sin extensión ni sufijos)</label>
+          <input type="text" class="form-control" id="imagen" placeholder="ejemplo: salonneon" required />
+          <div class="form-text">Debe coincidir con los archivos en /assets/images/</div>
         </div>
         
         <div>
