@@ -76,11 +76,15 @@
             <option value="No disponible">No disponible</option>
           </select>
         </div>
-
+        
         <div class="mb-3">
-          <label for="imagen" class="form-label">Nombre base de imagen (sin extensión ni sufijos)</label>
-          <input type="text" class="form-control" id="imagen" placeholder="ejemplo: salonneon" required />
-          <div class="form-text">Debe coincidir con los archivos en /assets/images/</div>
+          <label for="imagen" class="form-label">Imagen</label>
+          <select id="imagen" class="form-select" required>
+            <option value="">Seleccione...</option>
+            <option value="salongamer">Salón Gamer</option>
+            <option value="salonneon">Salón Neon</option>
+            <option value="salonoutdoor">Salón Outdoor</option>
+          </select>
         </div>
         
         <div>
@@ -115,7 +119,7 @@
         capacidad: Number(form.capacidad.value),
         valor: parseFloat(form.valor.value),
         estado: form.estado.value,
-        imagen: form.imagen.value.trim(),
+        imagen: form.imagen.value,
       };
 
       agregarSalon(nuevoSalon);

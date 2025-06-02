@@ -82,7 +82,7 @@ form.addEventListener('submit', (e) => {
   const capacidad = Number(form['capacidad'].value);
   const valor = Number(form['valor'].value);
   const estado = form['estado'].value;
-  const imagen = form['imagen'].value.trim();
+  const imagen = form['imagen'].value;
 
   if (!nombre || !descripcion || !direccion || !capacidad || !valor || !imagen) {
     alert('Por favor, complete todos los campos.');
