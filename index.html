@@ -1,110 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inicio - IDW S.A</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IDW S.A - Catálogo de Salones</title>
 
-    <!-- Bootstrap 5 -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Tu CSS personalizado -->
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-
-  <body>
-    <div class="wrapper">
-      <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-gradient shadow-sm">
-          <div class="container-fluid">
-            <a class="navbar-brand fw-bold fs-4" href="index.html">IDW S.A</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-lg-end justify-content-center" id="navbarNav">
-              <ul class="navbar-nav text-center text-lg-end">
-                <li class="nav-item">
-                  <a class="nav-link active nav-custom" href="index.html">Inicio</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link nav-custom" href="info.html">Institucional</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link nav-custom" href="contacto.html">Contacto</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
-      
-
-      <main class="container my-5">
-        <h1 class="text-center">Catálogo de Salones</h1>
-        <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
-
-          <!-- Salón 1 -->
-          <div class="col">
-            <a href="salon1.html" class="text-decoration-none text-dark">
-              <div class="card h-100 shadow">
-                <img src="assets/images/salonrainbow-main.jpg" class="card-img-top" alt="Interior colorido del Salón Arcoiris con decoración infantil">
-                <div class="card-body">
-                  <h3 class="card-title">Salón Arcoiris</h3>
-                  <p class="card-text">Ubicado en el centro. Capacidad para 50 niños.</p>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <!-- Salón 2 -->
-          <div class="col">
-            <a href="salon2.html" class="text-decoration-none text-dark">
-              <div class="card h-100 shadow">
-                <img src="assets/images/salongamer-main.avif" class="card-img-top" alt="Decoración temática Gamer, con luces y tecnología">
-                <div class="card-body">
-                  <h3 class="card-title">Salón Gamer</h3>
-                  <p class="card-text">Juegos electrónicos, arcade, lasers, y luces gamer.</p>
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <!-- Salón 3 -->
-          <div class="col">
-            <a href="salon3.html" class="text-decoration-none text-dark">
-              <div class="card h-100 shadow">
-                <img src="assets/images/salonoutdoor-main.jpg" class="card-img-top" alt="Área de juegos al aire libre con inflables y espacio verde">
-                <div class="card-body">
-                  <h3 class="card-title">Salón al Aire Libre</h3>
-                  <p class="card-text">Con juegos inflables y animadores.</p>
-                </div>
-              </div>
-            </a>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-gradient shadow-sm">
+        <div class="container-fluid">
+          <a class="navbar-brand fw-bold fs-4" href="index.html">IDW S.A</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-lg-end justify-content-center" id="navbarNav">
+            <ul class="navbar-nav text-center text-lg-end">
+              <li class="nav-item">
+                <a class="nav-link active nav-custom" href="index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-custom" href="info.html">Institucional</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-custom" href="contacto.html">Contacto</a>
+              </li>
+            </ul>
           </div>
         </div>
-      </main>
+      </nav>
+    </header>
 
-      <footer class="bg-dark text-white text-center py-3">
-        <p class="mb-0">&copy; <span id="currentYear"></span> IDW S.A - Todos los derechos reservados</p>
-      </footer>
-    </div>
+    <main class="container py-5">
+      <h1 class="mb-4 text-center">Catálogo de Salones</h1>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      <!-- Botón para crear nuevo salón -->
+      <div class="d-flex justify-content-end mb-4">
+        <a href="crear.html" class="btn btn-success">
+          + Nuevo Salón
+        </a>
+      </div>
 
-    <!-- Año dinámico -->
-    <script>
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
-    </script>
-  </body>
+      <div id="catalogoSalones" class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Tarjetas cargadas por JS -->
+      </div>
+
+      <!-- Botón para reiniciar catálogo (solo para desarrollo) -->
+      <div class="text-center mt-4">
+        <button id="btnReiniciarDatos" class="btn btn-outline-danger btn-sm">
+          Reiniciar Catálogo (Solo Desarrollo)
+        </button>
+      </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3">
+      <p class="mb-0">&copy; <span id="currentYear"></span> IDW S.A - Todos los derechos reservados</p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+  </script>
+
+  <script type="module">
+    import { inicializarLocalStorage, obtenerSalones, mostrarCatalogoSalones } from './js/app.js';
+
+    inicializarLocalStorage();
+    mostrarCatalogoSalones();
+
+    // Lógica para reiniciar los datos
+    document.getElementById("btnReiniciarDatos").addEventListener("click", () => {
+      localStorage.clear();
+      import('./js/app.js').then(({ inicializarLocalStorage }) => {
+        inicializarLocalStorage();
+        location.reload();
+      });
+    });
+  </script>
+</body>
 </html>
