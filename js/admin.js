@@ -36,7 +36,6 @@ function mostrarSalones() {
     tablaBody.appendChild(fila);
   });
 
-  // Reasignar eventos
   document.querySelectorAll('.btn-editar').forEach(btn => {
     btn.onclick = () => cargarFormulario(Number(btn.dataset.id));
   });
@@ -71,7 +70,6 @@ function eliminarSalon(id) {
   }
 }
 
-// Manejo de submit del formulario
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
