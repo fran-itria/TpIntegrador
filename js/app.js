@@ -1,4 +1,3 @@
-// Base de datos inicial
 export const salonesIniciales = [
   {
     id: 1,
@@ -32,14 +31,12 @@ export const salonesIniciales = [
   }
 ];
 
-// Inicializar LocalStorage si está vacío
 export function inicializarLocalStorage() {
   if (!localStorage.getItem("salones")) {
     localStorage.setItem("salones", JSON.stringify(salonesIniciales));
   }
 }
 
-// Obtener todos los salones
 export function obtenerSalones() {
   try {
     const salonesStr = localStorage.getItem("salones");
@@ -50,21 +47,19 @@ export function obtenerSalones() {
   }
 }
 
-// Obtener un salón por ID
 export function obtenerSalonPorId(id) {
   if (typeof id !== "number") return null;
   const salones = obtenerSalones();
   return salones.find(salon => salon.id === id) || null;
 }
 
-// Mostrar catálogo en index.html
 export function mostrarCatalogoSalones() {
   const contenedor = document.getElementById("catalogoSalones");
   if (!contenedor) return;
 
   const salones = obtenerSalones();
 
-  contenedor.innerHTML = ""; // Limpiar contenido
+  contenedor.innerHTML = "";
 
   salones.forEach(salon => {
     const tarjeta = document.createElement("div");
@@ -86,7 +81,6 @@ export function mostrarCatalogoSalones() {
   });
 }
 
-// Eliminar salón por ID (no permite eliminar los salones base con id 1,2,3)
 export function eliminarSalonPorId(id) {
   if (typeof id !== "number") {
     alert("ID inválido.");
@@ -110,7 +104,6 @@ export function eliminarSalonPorId(id) {
   return true;
 }
 
-// Guardar salón editado
 export function guardarSalon(salonEditado) {
   if (!salonEditado || typeof salonEditado.id !== "number") {
     console.error('Datos inválidos para actualizar el salón.');
@@ -130,7 +123,6 @@ export function guardarSalon(salonEditado) {
   return true;
 }
 
-// Agregar un nuevo salón
 export function agregarSalon(salonNuevo) {
   if (!salonNuevo || !salonNuevo.nombre) {
     console.error('Datos inválidos para agregar un salón.');
@@ -139,7 +131,6 @@ export function agregarSalon(salonNuevo) {
 
   let salones = obtenerSalones();
 
-  // Generar un id único basado en el máximo existente + 1
   const maxId = salones.reduce((max, s) => (s.id > max ? s.id : max), 0);
   salonNuevo.id = maxId + 1;
 
