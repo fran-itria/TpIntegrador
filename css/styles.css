@@ -65,7 +65,6 @@ header {
   background-color: #ffffff22;
   border-color: #fff;
   color: #fff !important;
-  /* asegura contraste si el fondo cambia */
   text-decoration: none;
 }
 
@@ -188,7 +187,6 @@ footer {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
-/* Barra de navegación mejorada */
 .navbar {
   background: linear-gradient(
     90deg,
