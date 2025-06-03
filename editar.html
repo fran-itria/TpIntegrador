@@ -30,6 +30,9 @@
               <li class="nav-item">
                 <a class="nav-link nav-custom" href="contacto.html">Contacto</a>
               </li>
+              <li class="nav-item">
+                  <a class="nav-link nav-custom" href="admin.html">Admin</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -137,7 +140,7 @@
         capacidad: parseInt(document.getElementById('capacidad').value),
         valor: parseFloat(document.getElementById('valor').value),
         estado: document.getElementById('estado').value,
-        imagen: document.getElementById('imagen').value.trim(),
+        imagen: document.getElementById('imagen').value,
       };
 
       guardarSalon(salonEditado);

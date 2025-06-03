@@ -30,6 +30,9 @@
               <li class="nav-item">
                 <a class="nav-link nav-custom" href="contacto.html">Contacto</a>
               </li>
+              <li class="nav-item">
+                  <a class="nav-link nav-custom" href="admin.html">Admin</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -73,7 +76,7 @@
             <option value="No disponible">No disponible</option>
           </select>
         </div>
-
+        
         <div class="mb-3">
           <label for="imagen" class="form-label">Nombre base de imagen (sin extensión ni sufijos)</label>
           <input type="text" class="form-control" id="imagen" placeholder="ejemplo: salonneon" required />
@@ -112,13 +115,12 @@
         capacidad: Number(form.capacidad.value),
         valor: parseFloat(form.valor.value),
         estado: form.estado.value,
-        imagen: form.imagen.value.trim(),
+        imagen: form.imagen.value,
       };
 
       agregarSalon(nuevoSalon);
       alert('Salón creado con éxito!');
       form.reset();
-      // Opcional: redirigir a catálogo o detalle
       window.location.href = 'index.html';
     });
   </script>

@@ -29,7 +29,7 @@ function mostrarSalones() {
       <td>${salon.estado}</td>
       <td>${salon.imagen}</td>
       <td>
-        <button class="btn btn-sm btn-warning btn-editar" data-id="${salon.id}">Editar</button>
+        <button class="btn btn-sm btn-warning btn-editar mb-2" data-id="${salon.id}">Editar</button>
         <button class="btn btn-sm btn-danger btn-eliminar" data-id="${salon.id}">Eliminar</button>
       </td>
     `;
@@ -82,7 +82,7 @@ form.addEventListener('submit', (e) => {
   const capacidad = Number(form['capacidad'].value);
   const valor = Number(form['valor'].value);
   const estado = form['estado'].value;
-  const imagen = form['imagen'].value.trim();
+  const imagen = form['imagen'].value;
 
   if (!nombre || !descripcion || !direccion || !capacidad || !valor || !imagen) {
     alert('Por favor, complete todos los campos.');
