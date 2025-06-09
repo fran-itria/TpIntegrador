@@ -8,6 +8,14 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+
+<script>
+  const token = sessionStorage.getItem('accessToken');
+  if (!token) {
+    window.location.href = 'login.html';
+  }
+</script>
+
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-gradient shadow-sm">
         <div class="container-fluid">
@@ -99,5 +107,12 @@
     </form>
   </div>
   <script type="module" src="./js/admin.js"></script>
+
+  <div class="container mt-5">
+  <h1>Panel de Administración</h1>
+  <a href="usuarios.html" class="btn btn-primary mt-3">Gestionar Usuarios</a>
+</div>
+
+
 </body>
 </html>

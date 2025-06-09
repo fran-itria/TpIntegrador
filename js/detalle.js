@@ -1,3 +1,6 @@
+if (!sessionStorage.getItem('accessToken')) {
+  window.location.href = 'login.html';
+}
 import { obtenerSalonPorId } from './app.js';
 
 const params = new URLSearchParams(window.location.search);

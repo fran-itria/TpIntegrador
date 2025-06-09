@@ -221,3 +221,36 @@ footer {
 .navbar-toggler {
   border: none;
 }
+
+#usersTable tbody tr:hover {
+  background-color: #f0f8ff;
+  cursor: pointer;
+}
+
+.btn {
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  filter: brightness(90%);
+}
+
+/* ------------------ TOAST NOTIFICATIONS ------------------ */
+#toastContainer {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1100;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.toast {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 0.375rem;
+  overflow: visible;
+  font-size: 0.9rem;
+  width: 100%;
+}

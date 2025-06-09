@@ -6,6 +6,10 @@ import {
   eliminarSalonPorId 
 } from './app.js';
 
+if (!sessionStorage.getItem('accessToken')) {
+  window.location.href = 'login.html';
+}
+
 inicializarLocalStorage();
 
 const tablaBody = document.getElementById('tablaSalonesBody');
