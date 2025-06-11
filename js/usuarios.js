@@ -180,3 +180,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+const button = document.getElementById('btnBack');
+button.addEventListener('click', () => {
+  window.location.href = 'admin.html';
+});
