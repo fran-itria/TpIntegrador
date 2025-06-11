@@ -38,7 +38,7 @@ form.addEventListener('submit', async (e) => {
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.message || 'Credenciales inválidas');
+      throw new Error('Credenciales inválidas');
     }
 
     sessionStorage.setItem('accessToken', data.token);

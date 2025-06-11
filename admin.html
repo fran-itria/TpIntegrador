@@ -43,17 +43,21 @@
         </div>
       </nav>
   </header>
+  <div class="container mt-5">
+    <h1>Administrar Usuarios</h1>
+    <a href="usuarios.html" class="btn btn-primary mt-3">Usuarios</a>
+  </div>
   <div class="container py-4">
     <h1>Administrar Salones</h1>
     <table class="table table-bordered table-striped border-black caption-top table-responsive">
       <caption>
         <div class="d-flex flex-row justify-content-between align-items-center">
-        <p> Lista de Salones </p>
-        <a href="crear.html" class="btn btn-success">
-          + Nuevo Salón
-        </a>
+          <p> Lista de Salones </p>
+          <a href="crear.html" class="btn btn-success">
+            + Nuevo Salón
+          </a>
+        </div>
       </caption>
-    </div>
       <thead>
         <tr class="table-info border-black">
           <th>Nombre</th>
@@ -106,13 +110,8 @@
       <button type="button" id="btnCancelar" class="btn btn-secondary">Cancelar</button>
     </form>
   </div>
+  
+  
   <script type="module" src="./js/admin.js"></script>
-
-  <div class="container mt-5">
-  <h1>Panel de Administración</h1>
-  <a href="usuarios.html" class="btn btn-primary mt-3">Gestionar Usuarios</a>
-</div>
-
-
 </body>
 </html>

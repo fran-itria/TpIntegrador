@@ -20,10 +20,15 @@
 
   <div class="container mt-4">
     <h2>Usuarios Registrados</h2>
-    <button id="btnNewUser" class="btn btn-success mb-3">Nuevo Usuario</button>
-    <table id="usersTable" class="table table-striped">
+    <table id="usersTable" class="table table-bordered table-striped border-black caption-top table-responsive">
+      <caption>
+        <div class="d-flex flex-row justify-content-start align-items-center">
+          <button id="btnBack" class="btn btn-danger mb-3 me-3">Volver</button>
+          <button id="btnNewUser" class="btn btn-success mb-3">Nuevo Usuario</button>
+        </div>
+      </caption>
       <thead>
-        <tr>
+        <tr class="table-info border-black">
           <th>Nombre</th>
           <th>Usuario</th>
           <th>Email</th>
@@ -31,7 +36,7 @@
           <th>Acciones</th>
         </tr>
       </thead>
-      <tbody></tbody>
+      <tbody class="table-group-divider"></tbody>
     </table>
   </div>
 
