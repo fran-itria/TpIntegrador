@@ -1,4 +1,3 @@
-// js/servicios.js
 import { obtenerServicios } from './app.js';
 
 const tablaServiciosBody = document.getElementById('tablaServiciosBody');
