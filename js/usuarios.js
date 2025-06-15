@@ -62,3 +62,8 @@ function showToast(message, type = 'success') {
 document.addEventListener('DOMContentLoaded', () => {
   fetchAndRender();
 });
+
+const button = document.getElementById('btnBack');
+button.addEventListener('click', () => {
+  window.location.href = 'admin.html';
+});
