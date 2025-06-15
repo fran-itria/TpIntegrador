@@ -16,72 +16,22 @@ function renderUserTable(users) {
   const tbody = document.querySelector('#usersTable tbody');
   tbody.innerHTML = '';
   users.forEach(user => {
-    const isLocal = user.local === true;
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td>${user.firstName} ${user.lastName}</td>
       <td>${user.username}</td>
       <td>${user.email}</td>
-      <td>${user.role || '—'}</td>
-      <td>
-        ${isLocal
-          ? `
-            <button class="btn btn-sm btn-warning btn-edit" data-id="${user.id}">Editar</button>
-            <button class="btn btn-sm btn-danger btn-delete" data-id="${user.id}">Eliminar</button>
-          `
-          : ''}
-      </td>
+      <td>${user.gender || '—'}</td>
+      <td>${user.company?.name || '—'}</td>
+      <td>${user.company?.title || '—'}</td>
     `;
     tbody.appendChild(tr);
   });
 }
 
-function getLocalUsers() {
-  let users = JSON.parse(localStorage.getItem('localUsers')) || [];
-
-  let updated = false;
-  users = users.map(user => {
-    if (user.local !== true) {
-      updated = true;
-      return { ...user, local: true };
-    }
-    return user;
-  });
-
-  if (updated) {
-    localStorage.setItem('localUsers', JSON.stringify(users));
-  }
-
-  return users;
-}
-
-function saveLocalUser(user) {
-  const localUsers = getLocalUsers();
-  localUsers.push(user);
-  localStorage.setItem('localUsers', JSON.stringify(localUsers));
-}
-
-function updateLocalUser(updatedUser) {
-  let localUsers = getLocalUsers();
-  localUsers = localUsers.map(user => (user.id === updatedUser.id ? updatedUser : user));
-  localStorage.setItem('localUsers', JSON.stringify(localUsers));
-}
-
-function deleteLocalUser(id) {
-  let localUsers = getLocalUsers();
-  localUsers = localUsers.filter(user => user.id !== id);
-  localStorage.setItem('localUsers', JSON.stringify(localUsers));
-}
-
-function renderAllUsers(apiUsers) {
-  const localUsers = getLocalUsers();
-  const combinedUsers = [...apiUsers, ...localUsers];
-  renderUserTable(combinedUsers);
-}
-
 async function fetchAndRender() {
   const apiUsers = await fetchUsers();
-  renderAllUsers(apiUsers);
+  renderUserTable(apiUsers);
 }
 
 function showToast(message, type = 'success') {
@@ -111,74 +61,6 @@ function showToast(message, type = 'success') {
 
 document.addEventListener('DOMContentLoaded', () => {
   fetchAndRender();
-
-  const userModalEl = document.getElementById('userModal');
-  const userModal = new bootstrap.Modal(userModalEl);
-  const form = document.getElementById('userForm');
-  const btnSubmit = document.getElementById('modalSubmitBtn');
-  const btnNewUser = document.getElementById('btnNewUser');
-
-  let editUserId = null;
-
-  btnNewUser.addEventListener('click', () => {
-    editUserId = null;
-    form.reset();
-    btnSubmit.textContent = 'Crear usuario';
-    userModal.show();
-  });
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-
-    const user = {
-      id: editUserId || Date.now(),
-      firstName: document.getElementById('modalFirstName').value.trim(),
-      lastName: document.getElementById('modalLastName').value.trim(),
-      username: document.getElementById('modalUsername').value.trim(),
-      email: document.getElementById('modalEmail').value.trim(),
-      role: document.getElementById('modalRole').value,
-      local: true // clave para poder editar/eliminar luego
-    };
-
-    if (editUserId) {
-      updateLocalUser(user);
-      showToast('Usuario actualizado correctamente', 'info');
-    } else {
-      saveLocalUser(user);
-      showToast('Usuario creado correctamente', 'success');
-    }
-
-    fetchAndRender();
-    userModal.hide();
-  });
-
-  document.querySelector('#usersTable tbody').addEventListener('click', e => {
-    if (e.target.classList.contains('btn-edit')) {
-      const id = Number(e.target.dataset.id);
-      const localUsers = getLocalUsers();
-      const userToEdit = localUsers.find(user => user.id === id);
-      if (userToEdit) {
-        document.getElementById('modalFirstName').value = userToEdit.firstName;
-        document.getElementById('modalLastName').value = userToEdit.lastName;
-        document.getElementById('modalUsername').value = userToEdit.username;
-        document.getElementById('modalEmail').value = userToEdit.email;
-        document.getElementById('modalRole').value = userToEdit.role;
-        editUserId = id;
-        btnSubmit.textContent = 'Actualizar usuario';
-        userModal.show();
-      }
-    } else if (e.target.classList.contains('btn-delete')) {
-      const btnDelete = e.target;
-      btnDelete.disabled = true;
-      const id = Number(btnDelete.dataset.id);
-      if (confirm('¿Estás seguro de eliminar este usuario?')) {
-        deleteLocalUser(id);
-        showToast('Usuario eliminado correctamente', 'danger');
-        fetchAndRender();
-      }
-      btnDelete.disabled = false;
-    }
-  });
 });
 
 const button = document.getElementById('btnBack');

@@ -31,9 +31,21 @@ export const salonesIniciales = [
   }
 ];
 
+export const serviciosIniciales = [
+  { id: 1, nombre: "Catering", descripcion: "Servicio de alimentos y bebidas", precio: 20000, estado: "Disponible" },
+  { id: 2, nombre: "Decoración", descripcion: "Decoración temática y ambientación", precio: 15000, estado: "Disponible" },
+  { id: 3, nombre: "Sonido e Iluminación", descripcion: "Equipos de sonido y luces profesionales", precio: 25000, estado: "Disponible" },
+  { id: 4, nombre: "Animadores", descripcion: "Animadores y entretenimiento para eventos", precio: 18000, estado: "Disponible" },
+  { id: 5, nombre: "Limpieza", descripcion: "Servicio de limpieza antes y después del evento", precio: 8000, estado: "Disponible" },
+  { id: 6, nombre: "Seguridad", descripcion: "Personal de seguridad durante el evento", precio: 12000, estado: "Disponible" },
+];
+
 export function inicializarLocalStorage() {
   if (!localStorage.getItem("salones")) {
     localStorage.setItem("salones", JSON.stringify(salonesIniciales));
+  }
+  if (!localStorage.getItem("servicios")) {
+    localStorage.setItem("servicios", JSON.stringify(serviciosIniciales));
   }
 }
 
@@ -136,5 +148,75 @@ export function agregarSalon(salonNuevo) {
 
   salones.push(salonNuevo);
   localStorage.setItem('salones', JSON.stringify(salones));
+  return true;
+}
+
+
+export function obtenerServicios() {
+  try {
+    const serviciosStr = localStorage.getItem("servicios");
+    return serviciosStr ? JSON.parse(serviciosStr) : [];
+  } catch (error) {
+    console.error("Error al leer servicios de LocalStorage:", error);
+    return [];
+  }
+}
+
+export function obtenerServicioPorId(id) {
+  if (typeof id !== "number") return null;
+  const servicios = obtenerServicios();
+  return servicios.find(servicio => servicio.id === id) || null;
+}
+
+export function agregarServicio(servicioNuevo) {
+  if (!servicioNuevo || !servicioNuevo.nombre) {
+    console.error('Datos inválidos para agregar un servicio.');
+    return false;
+  }
+
+  let servicios = obtenerServicios();
+
+  const maxId = servicios.reduce((max, s) => (s.id > max ? s.id : max), 0);
+  servicioNuevo.id = maxId + 1;
+
+  servicios.push(servicioNuevo);
+  localStorage.setItem('servicios', JSON.stringify(servicios));
+  return true;
+}
+
+export function guardarServicio(servicioEditado) {
+  if (!servicioEditado || typeof servicioEditado.id !== "number") {
+    console.error('Datos inválidos para actualizar el servicio.');
+    return false;
+  }
+
+  let servicios = obtenerServicios();
+  const index = servicios.findIndex(servicio => servicio.id === servicioEditado.id);
+
+  if (index === -1) {
+    console.error('No se encontró el servicio para actualizar');
+    return false;
+  }
+
+  servicios[index] = servicioEditado;
+  localStorage.setItem('servicios', JSON.stringify(servicios));
+  return true;
+}
+
+export function eliminarServicioPorId(id) {
+  if (typeof id !== "number") {
+    alert("ID inválido.");
+    return false;
+  }
+
+  let servicios = obtenerServicios();
+  const nuevoListado = servicios.filter(servicio => servicio.id !== id);
+
+  if (nuevoListado.length === servicios.length) {
+    alert("No se encontró el servicio a eliminar.");
+    return false;
+  }
+
+  localStorage.setItem('servicios', JSON.stringify(nuevoListado));
   return true;
 }
