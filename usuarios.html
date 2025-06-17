@@ -67,45 +67,23 @@
   <div id="toastContainer" class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1100;"></div>
 
   <div class="container mt-4">
-    <h2>Usuarios Registrados</h2>
+    <div class="d-flex justify-content-start align-items-center mb-4">
+      <a href="admin.html" class="btn btn-danger btn-sm me-3"><---</a>
+      <h1>Usuarios registrados</h1>
+    </div>
     <table id="usersTable" class="table table-bordered table-striped border-black caption-top table-responsive">
-      <caption>
-        <div class="d-flex flex-row justify-content-start align-items-center">
-          <button id="btnBack" class="btn btn-danger mb-3 me-3">Volver</button>
-        </div>
-      </caption>
       <thead>
         <tr class="table-info border-black">
           <th>Nombre</th>
           <th>Usuario</th>
           <th>Email</th>
-          <th>Rol</th>
-          <th>Acciones</th>
+          <th>Género</th>
+          <th>Empresa</th>
+          <th>Puesto</th>
         </tr>
       </thead>
       <tbody class="table-group-divider"></tbody>
     </table>
-  </div>
-
-    <div class="card shadow-sm">
-      <div class="card-body">
-        <div class="table-responsive">
-          <table id="usersTable" class="table table-striped align-middle">
-            <thead class="table-primary">
-              <tr>
-                <th>Nombre</th>
-                <th>Usuario</th>
-                <th>Email</th>
-                <th>Género</th>
-                <th>Empresa</th>
-                <th>Puesto</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
