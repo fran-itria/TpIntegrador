@@ -49,7 +49,7 @@ opcionVacia.value = "";
 opcionVacia.textContent = "-- Seleccionar salón --";
 salonSelect.appendChild(opcionVacia);
 
-// Cargar salones
+
 salones.forEach(salon => {
   const option = document.createElement("option");
   option.value = salon.id;
@@ -57,7 +57,7 @@ salones.forEach(salon => {
   salonSelect.appendChild(option);
 });
 
-// Cargar servicios
+
 servicios.forEach(servicio => {
   const div = document.createElement("div");
   div.className = "form-check";
@@ -70,7 +70,7 @@ servicios.forEach(servicio => {
   checkboxServicios.appendChild(div);
 });
 
-// Calcular presupuesto
+
 document.getElementById("formPresupuesto").addEventListener("submit", function (e) {
   e.preventDefault();
   const salonId = parseInt(salonSelect.value);
@@ -89,7 +89,7 @@ document.getElementById("formPresupuesto").addEventListener("submit", function (
     detallesServicios.push(`${servicio.nombre}: $${subtotal}`);
   });
 
-  // Mostrar resultado
+
   resultado.classList.remove("d-none");
   resultado.innerHTML = `
     <strong>Presupuesto generado</strong><br>
@@ -98,7 +98,7 @@ document.getElementById("formPresupuesto").addEventListener("submit", function (
     <strong>Total: $${total}</strong>
   `;
 
-  // Guardar presupuesto en localStorage
+
   const nuevoPresupuesto = {
     id: Date.now(),
     salon: salon.nombre,
