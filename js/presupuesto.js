@@ -90,6 +90,7 @@ document.getElementById("formPresupuesto").addEventListener("submit", function (
   });
 
 
+
   resultado.classList.remove("d-none");
   resultado.innerHTML = `
     <strong>Presupuesto generado</strong><br>
@@ -99,6 +100,9 @@ document.getElementById("formPresupuesto").addEventListener("submit", function (
   `;
 
 
+
+
+
   const nuevoPresupuesto = {
     id: Date.now(),
     salon: salon.nombre,
@@ -106,6 +110,26 @@ document.getElementById("formPresupuesto").addEventListener("submit", function (
     total,
     fecha: new Date().toLocaleDateString()
   };
+
+
+document.getElementById("btnReservar").classList.remove("d-none");
+
+  document.getElementById("btnReservar").addEventListener("click", function () {
+  const salonSeleccionado = salonSelect.options[salonSelect.selectedIndex].textContent;
+  const serviciosSeleccionados = [...document.querySelectorAll('#checkboxServicios input:checked')];
+  
+  if (!salonSeleccionado || serviciosSeleccionados.length === 0) {
+    alert("Por favor, primero calcule el presupuesto para reservar.");
+    return;
+  }
+
+  let serviciosTexto = serviciosSeleccionados.map(chk => {
+    const servicio = servicios.find(s => s.id == chk.value);
+    return servicio.nombre;
+  }).join(", ");
+
+  alert(`¡Reserva confirmada!\nSalón: ${salonSeleccionado}\nServicios: ${serviciosTexto} \nTotal: $${total}`);
+});
 
   const presupuestosGuardados = JSON.parse(localStorage.getItem("presupuestos")) || [];
   presupuestosGuardados.push(nuevoPresupuesto);
