@@ -31,9 +31,8 @@ function mostrarSalones() {
       <td>${salon.capacidad}</td>
       <td>${salon.valor}</td>
       <td>${salon.estado}</td>
-      <td>${salon.imagen}</td>
       <td>
-        <button class="btn btn-sm btn-warning btn-editar mb-2" data-id="${salon.id}">Editar</button>
+        <button class="btn btn-sm btn-primary btn-editar" data-id="${salon.id}">Editar</button>
         <button class="btn btn-sm btn-danger btn-eliminar" data-id="${salon.id}">Eliminar</button>
       </td>
     `;
