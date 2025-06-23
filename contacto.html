@@ -44,7 +44,8 @@
                 <li class="nav-item">
                   <a class="nav-link nav-custom" href="servicios.html">Servicios</a>
                 </li>
-                <li class="nav-item"><a class="nav-link nav-custom" href="presupuesto.html">Presupuesto</a>
+                <li class="nav-item">
+                  <a class="nav-link nav-custom" href="presupuesto.html">Presupuesto</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link nav-custom" href="admin.html">Admin</a>
@@ -62,19 +63,15 @@
           responderemos a la brevedad.
         </p>
 
+
+        <div id="presupuestoResumen" class="alert alert-info text-center mb-5" style="display: none;"></div>
+
         <section class="container form-y-datos">
           <div class="row">
             <div class="col-md-6 mb-4">
               <form class="formulario">
-                <div
-                  class="mb-4"
-                  action="#"
-                  method="post"
-                  aria-label="Formulario de contacto"
-                >
-                  <label for="nombre" class="form-label"
-                    >Nombre y apellido</label
-                  >
+                <div class="mb-4" aria-label="Formulario de contacto">
+                  <label for="nombre" class="form-label">Nombre y apellido</label>
                   <input
                     type="text"
                     id="nombre"
@@ -85,9 +82,7 @@
                   />
                 </div>
                 <div class="mb-4">
-                  <label for="email" class="form-label"
-                    >Correo Electrónico</label
-                  >
+                  <label for="email" class="form-label">Correo Electrónico</label>
                   <input
                     type="email"
                     id="email"
@@ -125,8 +120,7 @@
               <h3 class="mb-3">Datos de contacto</h3>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item bg-transparent">
-                  📍 <strong>Dirección:</strong> Calle Imaginaria 123, Ciudad
-                  Eventos
+                  📍 <strong>Dirección:</strong> Calle Imaginaria 123, Ciudad Eventos
                 </li>
                 <li class="list-group-item bg-transparent">
                   📞 <strong>Teléfono:</strong> (011) 1234-5678
@@ -142,8 +136,7 @@
 
       <footer class="bg-dark text-white text-center py-3">
         <p class="mb-0">
-          &copy; <span id="currentYear"></span> IDW S.A - Todos los derechos
-          reservados
+          &copy; <span id="currentYear"></span> IDW S.A - Todos los derechos reservados
         </p>
       </footer>
     </div>
@@ -152,6 +145,25 @@
 
     <script>
       document.getElementById("currentYear").textContent = new Date().getFullYear();
+
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const resumen = document.getElementById("presupuestoResumen");
+        const presupuestos = JSON.parse(localStorage.getItem("presupuestos")) || [];
+
+        if (presupuestos.length > 0) {
+          const ultimo = presupuestos[presupuestos.length - 1];
+
+          resumen.style.display = "block";
+          resumen.innerHTML = `
+            <strong>Tu presupuesto más reciente:</strong><br>
+            Salón: ${ultimo.salon}<br>
+            ${ultimo.servicios.join("<br>")}<br>
+            <strong>Total: $${ultimo.total}</strong><br>
+            Fecha: ${ultimo.fecha}
+          `;
+        }
+      });
     </script>
   </body>
 </html>
