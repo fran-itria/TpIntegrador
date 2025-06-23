@@ -26,8 +26,7 @@ let salones = JSON.parse(localStorage.getItem("salones")) || [
     estado: "Disponible",
     imagen: "salonoutdoor"
   }
-
-  ];
+];
 
 let servicios = JSON.parse(localStorage.getItem("servicios")) || [
   { id: 1, nombre: "Catering", descripcion: "Servicio de alimentos y bebidas", precio: 20000, estado: "Disponible" },
@@ -35,13 +34,22 @@ let servicios = JSON.parse(localStorage.getItem("servicios")) || [
   { id: 3, nombre: "Sonido e Iluminación", descripcion: "Equipos de sonido y luces profesionales", precio: 25000, estado: "Disponible" },
   { id: 4, nombre: "Animadores", descripcion: "Animadores y entretenimiento para eventos", precio: 18000, estado: "Disponible" },
   { id: 5, nombre: "Limpieza", descripcion: "Servicio de limpieza antes y después del evento", precio: 8000, estado: "Disponible" },
-  { id: 6, nombre: "Seguridad", descripcion: "Personal de seguridad durante el evento", precio: 12000, estado: "Disponible" },
-
+  { id: 6, nombre: "Seguridad", descripcion: "Personal de seguridad durante el evento", precio: 12000, estado: "Disponible" }
 ];
 
 const salonSelect = document.getElementById("salonSelect");
 const checkboxServicios = document.getElementById("checkboxServicios");
 const resultado = document.getElementById("resultadoPresupuesto");
+const btnIrContacto = document.getElementById("btnIrContacto");
+const nombreSpan = document.getElementById("nombreSalon");
+
+
+function obtenerParametroId() {
+  const params = new URLSearchParams(window.location.search);
+  return parseInt(params.get('id'));
+}
+
+const idSalonUrl = obtenerParametroId();
 
 
 const opcionVacia = document.createElement("option");
@@ -53,9 +61,22 @@ salonSelect.appendChild(opcionVacia);
 salones.forEach(salon => {
   const option = document.createElement("option");
   option.value = salon.id;
-  option.textContent =`${salon.nombre}- $${salon.valor}`;
+  option.textContent =`${salon.nombre} - $${salon.valor}`;
   salonSelect.appendChild(option);
 });
+
+
+if (!isNaN(idSalonUrl)) {
+  salonSelect.value = idSalonUrl;
+  const salonSeleccionado = salones.find(s => s.id === idSalonUrl);
+  if (salonSeleccionado) {
+    nombreSpan.textContent = salonSeleccionado.nombre;
+  } else {
+    nombreSpan.textContent = "Seleccionar salón";
+  }
+} else {
+  nombreSpan.textContent = "Seleccionar salón";
+}
 
 
 servicios.forEach(servicio => {
@@ -64,7 +85,7 @@ servicios.forEach(servicio => {
   div.innerHTML = `
     <input class="form-check-input" type="checkbox" id="servicio-${servicio.id}" value="${servicio.id}">
     <label class="form-check-label" for="servicio-${servicio.id}">
-      ${servicio.nombre} - $${servicio.precio} 
+      ${servicio.nombre} - $${servicio.precio}
     </label>
   `;
   checkboxServicios.appendChild(div);
@@ -73,7 +94,13 @@ servicios.forEach(servicio => {
 
 document.getElementById("formPresupuesto").addEventListener("submit", function (e) {
   e.preventDefault();
+
   const salonId = parseInt(salonSelect.value);
+  if (!salonId) {
+    alert("Por favor, seleccioná un salón.");
+    return;
+  }
+
   const serviciosSeleccionados = [...document.querySelectorAll('#checkboxServicios input:checked')];
 
   const salon = salones.find(s => s.id === salonId);
@@ -89,7 +116,6 @@ document.getElementById("formPresupuesto").addEventListener("submit", function (
     detallesServicios.push(`${servicio.nombre}: $${subtotal}`);
   });
 
-
   resultado.classList.remove("d-none");
   resultado.innerHTML = `
     <strong>Presupuesto generado</strong><br>
@@ -97,7 +123,6 @@ document.getElementById("formPresupuesto").addEventListener("submit", function (
     ${detallesServicios.join("<br>")}<br>
     <strong>Total: $${total}</strong>
   `;
-
 
   const nuevoPresupuesto = {
     id: Date.now(),
@@ -110,4 +135,13 @@ document.getElementById("formPresupuesto").addEventListener("submit", function (
   const presupuestosGuardados = JSON.parse(localStorage.getItem("presupuestos")) || [];
   presupuestosGuardados.push(nuevoPresupuesto);
   localStorage.setItem("presupuestos", JSON.stringify(presupuestosGuardados));
+
+  btnIrContacto.classList.remove("d-none");
+
+  btnIrContacto.replaceWith(btnIrContacto.cloneNode(true));
+  const nuevoBtnIrContacto = document.getElementById("btnIrContacto");
+
+  nuevoBtnIrContacto.addEventListener("click", () => {
+    window.location.href = "contacto.html";
+  });
 });
