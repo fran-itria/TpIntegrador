@@ -34,7 +34,10 @@
                 <a class="nav-link nav-custom" href="servicios.html">Servicios</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link nav-custom" href="admin.html">Admin</a>
+                <a class="nav-link nav-custom" href="presupuesto.html">Presupuesto</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-custom" href="admin.html">Admin</a>
               </li>
             </ul>
           </div>
@@ -42,8 +45,7 @@
       </nav>
     </header>
 
-    <main class="container py-5" id="detalleSalon">
-    </main>
+    <main class="container py-5" id="detalleSalon"></main>
 
     <footer class="bg-dark text-white text-center py-3">
       <p class="mb-0">&copy; <span id="currentYear"></span> IDW S.A - Todos los derechos reservados</p>
@@ -56,7 +58,7 @@
   </script>
 
   <script type="module">
-    import { obtenerSalonPorId, eliminarSalonPorId } from './js/app.js';
+    import { obtenerSalonPorId } from './js/app.js';
 
     const params = new URLSearchParams(window.location.search);
     const id = parseInt(params.get('id'));
@@ -112,18 +114,9 @@
 
           <div class="d-flex justify-content-center gap-3 mt-4">
             <a href="index.html" class="btn btn-primary">Volver</a>
-            <a href="editar.html?id=${salon.id}" class="btn btn-warning">Editar</a>
-            <button id="btnEliminar" class="btn btn-danger">Eliminar</button>
+            <a href="presupuesto.html?id=${salon.id}" class="btn btn-success">Hacer Presupuesto</a>
           </div>
         `;
-
-        const btnEliminar = document.getElementById('btnEliminar');
-        btnEliminar.addEventListener('click', () => {
-          if (confirm(`¿Estás seguro de eliminar el salón "${salon.nombre}"?`)) {
-            eliminarSalonPorId(salon.id);
-            window.location.href = 'index.html';
-          }
-        });
       }
     }
   </script>

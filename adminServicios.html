@@ -40,12 +40,15 @@
   </header>
 
   <main class="container py-4">
-    <h1>Administrar Servicios</h1>
+    <div class="d-flex justify-content-start align-items-center">
+      <a href="admin.html" class="btn btn-danger btn-sm me-3"><---</a>
+      <h1>Administrar Servicios</h1>
+    </div>
     <table class="table table-bordered table-striped border-black caption-top table-responsive">
       <caption>
         <div class="d-flex flex-row justify-content-between align-items-center">
           <p> Lista de Servicios </p>
-          <a href="#" id="btnNuevoServicio" class="btn btn-success">+ Nuevo Servicio</a>
+            <a href="#" id="btnNuevoServicio" class="btn btn-success">+ Nuevo Servicio</a>
         </div>
       </caption>
       <thead>
@@ -81,8 +84,8 @@
           <option value="No disponible">No disponible</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-primary">Guardar</button>
       <button type="button" id="btnCancelar" class="btn btn-secondary">Cancelar</button>
+      <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
   </main>
 

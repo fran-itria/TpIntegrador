@@ -17,13 +17,14 @@ function renderUserTable(users) {
   tbody.innerHTML = '';
   users.forEach(user => {
     const tr = document.createElement('tr');
+    const {firstName, lastName, username, email, gender, company} = user
     tr.innerHTML = `
-      <td>${user.firstName} ${user.lastName}</td>
-      <td>${user.username}</td>
-      <td>${user.email}</td>
-      <td>${user.gender || '—'}</td>
-      <td>${user.company?.name || '—'}</td>
-      <td>${user.company?.title || '—'}</td>
+      <td>${firstName} ${lastName}</td>
+      <td>${username}</td>
+      <td>${email}</td>
+      <td>${gender || '—'}</td>
+      <td>${company?.name || '—'}</td>
+      <td>${company?.title || '—'}</td>
     `;
     tbody.appendChild(tr);
   });
