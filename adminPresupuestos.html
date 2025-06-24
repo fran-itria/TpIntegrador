@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Administración de Presupuestos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<script>
+
+  const token = sessionStorage.getItem('accessToken');
+  if (!token) {
+    window.location.href = 'login.html';
+  }
+</script>
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-gradient shadow-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold fs-4" href="index.html">IDW S.A</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-lg-end justify-content-center" id="navbarNav">
+        <ul class="navbar-nav text-center text-lg-end">
+          <li class="nav-item"><a class="nav-link nav-custom" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link nav-custom" href="info.html">Institucional</a></li>
+          <li class="nav-item"><a class="nav-link nav-custom" href="contacto.html">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link nav-custom" href="servicios.html">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link nav-custom" href="presupuesto.html">Presupuesto</a></li>
+          <li class="nav-item"><a class="nav-link nav-custom" href="admin.html">Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="container my-5">
+  <h1 class="mb-4">Administrar Presupuestos</h1>
+
+  <div class="mb-3 d-flex justify-content-between align-items-center">
+    <button id="btnBorrarTodos" class="btn btn-danger">Borrar todos los presupuestos</button>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="table-info">
+        <tr>
+          <th>ID</th>
+          <th>Fecha</th>
+          <th>Salón</th>
+          <th>Servicios</th>
+          <th>Total</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tablaPresupuestosBody"></tbody>
+    </table>
+  </div>
+
+  <p id="mensajeSinDatos" class="text-center mt-4 text-muted" style="display:none;">No hay presupuestos guardados.</p>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  const tablaBody = document.getElementById('tablaPresupuestosBody');
+  const mensajeSinDatos = document.getElementById('mensajeSinDatos');
+  const btnBorrarTodos = document.getElementById('btnBorrarTodos');
+
+  function cargarPresupuestos() {
+    const presupuestos = JSON.parse(localStorage.getItem('presupuestos')) || [];
+
+    tablaBody.innerHTML = '';
+
+    if (presupuestos.length === 0) {
+      mensajeSinDatos.style.display = 'block';
+      return;
+    } else {
+      mensajeSinDatos.style.display = 'none';
+    }
+
+    presupuestos.forEach(p => {
+      const tr = document.createElement('tr');
+
+      tr.innerHTML = `
+        <td>${p.id}</td>
+        <td>${p.fecha}</td>
+        <td>${p.salon}</td>
+        <td>${p.servicios.join('<br>')}</td>
+        <td>$${p.total}</td>
+        <td>
+          <button class="btn btn-sm btn-danger btnEliminar" data-id="${p.id}">Eliminar</button>
+        </td>
+      `;
+
+      tablaBody.appendChild(tr);
+    });
+
+    document.querySelectorAll('.btnEliminar').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = parseInt(btn.getAttribute('data-id'));
+        eliminarPresupuesto(id);
+      });
+    });
+  }
+
+  function eliminarPresupuesto(id) {
+    let presupuestos = JSON.parse(localStorage.getItem('presupuestos')) || [];
+    presupuestos = presupuestos.filter(p => p.id !== id);
+    localStorage.setItem('presupuestos', JSON.stringify(presupuestos));
+    cargarPresupuestos();
+  }
+
+  btnBorrarTodos.addEventListener('click', () => {
+    if (confirm('¿Estás seguro que querés borrar todos los presupuestos?')) {
+      localStorage.removeItem('presupuestos');
+      cargarPresupuestos();
+    }
+  });
+
+  cargarPresupuestos();
+</script>
+
+</body>
+</html>
